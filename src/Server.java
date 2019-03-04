@@ -8,7 +8,11 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(9999);
 
+        System.out.println("Waiting for client");
+
         Socket socket = serverSocket.accept();
+
+        System.out.println("Client connected");
 
         InputStream in = socket.getInputStream();
         OutputStream out = socket.getOutputStream();
@@ -18,7 +22,7 @@ public class Server {
 
         System.out.println("Received from client - " + new String(buffer).trim());
 
-        out.write("Hello from Server...".getBytes());
+        out.write("Hello from the server".getBytes());
 
         socket.close();
         serverSocket.close();
